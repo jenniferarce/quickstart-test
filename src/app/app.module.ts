@@ -10,8 +10,10 @@ import { NotFoundComponent } from './routers/not-found.component';
 import { MessagesModule } from './routers/messages/messages.module'; 
 import { PhotosModule } from './routers/photos/photos.module';
 
+import { routing } from './app.routing';
+
 @NgModule({
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule,MessagesModule,PhotosModule],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule,MessagesModule,PhotosModule,routing],
   declarations: [AppComponent,HomeComponent,NotFoundComponent],
   bootstrap: [AppComponent]
 })
