@@ -29,10 +29,12 @@ import { Observable } from 'rxjs/Rx';
                 <h4>{{followers.login}}</h4> 
         </div>
     </div>
+    
         `,
     styles: [`.avatar {
                         width: 100px;
                         height:100px;
+                        border-radius:100%;
                     }
         `]
     ,
