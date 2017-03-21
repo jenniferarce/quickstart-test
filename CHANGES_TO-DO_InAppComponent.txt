@@ -1,0 +1,185 @@
+16/03/2017
+//app.component:
+
+@Component({
+  selector: 'my-app',
+  template: `
+ 
+  `,
+})
+
+export class AppComponent {
+  }
+}
+
+//*******************-------------------------
+
+//Tweet excercise : 
+
+//import { TweetsComponent } from './tweets/tweets.component';//10/03
+//import { TweetService } from './tweets/tweets.service';
+//import { Tweet } from './tweets/tweet';
+
+
+//template: `
+  //  <div *ngFor="let data of tweets">
+    //<tweetList [data]="data"></tweetList>
+    //</div>
+  //`,
+    //providers: [TweetService]
+//export class AppComponent {
+ //tweets: Tweet[];
+  //constructor(tweetServices: TweetService) {
+    //    this.tweets = tweetServices.getTweets();
+    //}
+//}
+
+//*******************-------------------------
+
+//Zippy exercise:::
+
+//necesario:
+//import{ZippyComponent} from './zippy/zippy.component';
+//import{Passengers} from './zippy/passengers';
+//import{PassengersService} from './zippy/passengers.service';
+
+//en template:
+//  <div *ngFor = "let passenger of passengers">
+        //<zippy [passenger]="passenger"> </zippy>
+    //</div>
+
+
+//en: export class AppComponent {
+  passengers:Passengers[];
+
+  constructor(passengerService:PassengersService){
+    this.passengers = passengerService.getPassengers();
+  //}
+
+//en @Component:
+  providers: [PassengersService]
+
+//*******************-------------------------
+
+//import{ContactFormComponent} from './contact-form/contact-form.component';//13/03
+
+//<contact-form></contact-form>
+
+//*******************-------------------------
+
+//import{SubscribeComponent} from './subscribe-form/subscribe-form.component'; //13/03
+
+//  <subscribe-form></subscribe-form>
+
+//*******************-------------------------
+//PIPES:
+
+//import {SummaryPipe} from './summary-pipe/summary.pipe';
+//import{BootstrapPanel} from './ng-content-example/bootstrap.panel.component';
+
+<ng-content>:::
+
+//en app.component 
+template:`
+ <bs-panel>
+    <div class="heading">The heading</div>
+    <div class="body">This is the body</div>
+    <div class="body">This is another body</div>
+   </bs-panel>`
+
+// Pipe example : 
+//template: `
+   //{{post.title}}
+   //<br/>
+   //{{post.body | summary}}
+  //`
+
+//export class AppComponent{ 
+//post = {
+   // title: 'Angular tutorial',
+    //body: `
+    //asdasdasdsda e rwrw  ewhg jjghjgh fdsfs dff. dsfdsfsdfrt e tertre v hajkdhkjah 
+    //kajsldja  ermwmr w. dfhkdjf , asdn sa .
+    //`
+  //}
+
+
+//*******************-------------------------
+
+//import {SignUpFormComponent} from './signup-form/signup-form.component';
+
+// <signup-form></signup-form> 
+
+//*******************-------------------------
+//Password:: necesario::
+//import{PasswordComponent} from './password-form/password-form.component';
+
+//<password-form></password-form>
+
+//*******************-------------------------
+//CONNECTING SERVER: 
+
+import { Component, AfterViewInit } from '@angular/core';
+import{Observable} from 'rxjs/Rx';
+import{FormGroup,FormBuilder} from '@angular/forms';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/map';
+import {PostService} from './connectingServer/post.service';
+import {OnInit} from '@angular/core';
+
+
+@Component({
+  selector: 'my-app',
+  template: `
+      <div *ngIf="isLoading">Getting data...
+      <i class="fa fa-spinner fa-spin fa-3x"></i></div>
+  `,
+  providers: [PostService]
+})
+export class AppComponent implements OnInit{
+  isLoading = true;
+
+
+ constructor(private _postService : PostService){
+
+ }
+
+ ngOnInit(){
+    this._postService.getPosts()
+                  .subscribe(posts => {
+                  //this.isLoading = false;
+                  console.log(posts[0].id)
+                });
+ }
+
+}
+
+      
+//*******************-------------------------
+//TABLE-TEST
+
+import {TableComponent} from './table-test/table.component';
+import{Passengers} from './zippy/passengers';
+
+@Component({
+  selector: 'my-app',
+  template: `
+        <passengers-table> </passengers-table>
+  `
+})
+export class AppComponent {}
+
+//*******************-------------------------
+//GITHUB
+
+import{GitHubComponent} from './github-list/github.component';
+
+@Component({
+  selector: 'my-app',
+  template: `
+        <github></github>
+  `
+})
+export class AppComponent {}
+
+//*******************-------------------------
