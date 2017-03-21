@@ -1,35 +1,29 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GitHubService } from './github.service';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/forkJoin';
 
 
 @Component({
     selector: 'github',
     template: `
-    <div class="media" *ngIf="userGit">
-        <div class="media-left">
-        <h3 class="media-heading">@{{userGit.login}}</h3>
-            <a href="#">
-            <img class="media-object avatar" src="{{userGit.avatar_url}}" alt="...">
-            </a>
+        <div *ngIf="isLoading">
+            <i class="fa fa-spinner fa-spin fa-3x"></i>
         </div>
-        <div class="media-body">
-            
+        <div class="media" *ngIf="userGit">
+            <h3>@{{userGit.login}}</h3>
+            <img class="avatar" src="{{userGit.avatar_url}}">
+
+            <h3 class="media-heading">Followers</h3>
+            <div class="media" *ngFor="let followers of followersGit">
+                <div class="media-left">
+                    <img class="media-object avatar" src="{{followers.avatar_url}}">
+                </div>
+                <div class="media-body">
+                    <h4>{{followers.login}}</h4> 
+                </div>
+            </div>
         </div>
-    </div>
-    <h3 class="media-heading">Followers</h3>
-        <div class="media" *ngFor="let followers of followersGit">
-        <div class="media-left">
-            
-            <a href="#">
-            <img class="avatar" src="{{followers.avatar_url}}">
-            </a>
-        </div>
-         <div class="media-body">
-                <h4>{{followers.login}}</h4> 
-        </div>
-    </div>
-    
         `,
     styles: [`.avatar {
                         width: 100px;
@@ -41,7 +35,7 @@ import { Observable } from 'rxjs/Rx';
     providers: [GitHubService]
 })
 
-export class GitHubComponent implements OnInit{
+export class GitHubComponent implements OnInit {
     isLoading = true;
     userGit;
     followersGit;
@@ -52,13 +46,13 @@ export class GitHubComponent implements OnInit{
     }
     ngOnInit() {
 
-        var observable = Observable.forkJoin(
+      Observable.forkJoin(
             this._githubService.getUsers("octocat"),
             this._githubService.getFollowers("octocat"))
             .subscribe(res => { this.userGit = res[0]; this.followersGit = res[1] }, null,
             () => { this.isLoading = false; });
 
-           
+
     }
 
 
