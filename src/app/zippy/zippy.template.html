@@ -1,0 +1,15 @@
+<div>
+    <div class="panel panel-default">
+        <div class="panel-heading cursorPointer"> {{passenger.name}}
+            
+            <i class = "glyphicon"
+                [ngClass] = "{  
+                        'glyphicon-chevron-down': ishidden,
+                        'glyphicon-chevron-up': !ishidden }" (click)="onClick()"> 
+ </i> 
+        </div>
+        <div *ngIf="!ishidden" class="panel-body"  >
+         {{passenger.name}}
+            <ng-content></ng-content>
+            </div>
+    </div>

@@ -1,0 +1,6 @@
+*Usar este app.component.ts como principal (copiar el contenido o reemplazarlo)
+- en el index tiene que estar : 
+
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    sin eso, lo que use jquery no va a funcionar!

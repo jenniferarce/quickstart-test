@@ -1,0 +1,20 @@
+
+    <div class="media">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object" src={{data.imageUrl}} alt="..">
+            </a>
+        </div>
+        <div class="media-body" >
+
+            <h4 class="media-heading">{{data.accountName}}</h4>
+
+            <h5 style="color:gray">{{data.tweetHandler}}</h5>
+            {{data.tweetText}}
+            <p>
+            <i class="glyphicon glyphicon-heart" [class.HeartPink]="data.isLiked" (click)="onClickHeart()"></i> {{data.likeCounter}}
+
+        </div>
+    </div>
+
+    
