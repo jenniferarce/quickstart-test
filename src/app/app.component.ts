@@ -1,7 +1,7 @@
-import { Component} from '@angular/core';
-import{Observable} from 'rxjs/Rx';
-import{FormGroup,FormBuilder} from '@angular/forms';
-import {Router} from '@angular/router';
+import { AuthGuard } from './authGuard/auth-guard.service';
+import { Component } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'my-app',
@@ -15,15 +15,17 @@ import {Router} from '@angular/router';
         <button (click)="onClick()">Click me</button>
         <router-outlet></router-outlet>
   `
+  //providers: [AuthGuard]
+
 })
 
-export class AppComponent{
-  constructor(private _router : Router){
+export class AppComponent {
+  constructor(private _router: Router) {
 
   }
 
-  onClick(){
-      this._router.navigate(['photos',2]);
+  onClick() {
+    this._router.navigate(['photos', 2]);
   }
 
 }
