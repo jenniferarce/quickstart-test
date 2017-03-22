@@ -11,9 +11,10 @@ import { MessagesModule } from './routers/messages/messages.module';
 import { PhotosModule } from './routers/photos/photos.module';
 
 import { routing } from './app.routing';
+import { photosRouting } from './routers/photos.routing';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule,MessagesModule,PhotosModule,routing],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule,MessagesModule,PhotosModule,photosRouting,routing],
   declarations: [AppComponent,HomeComponent,NotFoundComponent],
   bootstrap: [AppComponent]
 })
