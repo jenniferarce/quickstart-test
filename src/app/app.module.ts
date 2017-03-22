@@ -21,26 +21,3 @@ import {PostsComponent} from './nav-bar/components/posts.component';
 export class AppModule {
 
 }
-
-
-//routers
-//import { HomeComponent } from './routers/home.component';
-//import { NotFoundComponent } from './routers/not-found.component';
-//import { MessagesModule } from './routers/messages/messages.module';
-//import { PhotosModule } from './routers/photos/photos.module';
-
-//import { routing } from './app.routing';
-//import { photosRouting } from './routers/photos.routing';
-
-//Authentication Guards
-//import { AuthService } from './authGuard/auth.service';
-//import { AuthGuard } from './authGuard/auth-guard.service';
-
-
-//imports:
-//, MessagesModule, PhotosModule, photosRouting, routing
-
-//declarations:
-//, HomeComponent, NotFoundComponent
-
- //providers: //providers: [AuthGuard,AuthService],

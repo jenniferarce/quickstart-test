@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
   selector: 'my-app',
   template: `
         <nav-bar></nav-bar>
+        <div class="container">
         <router-outlet></router-outlet>
+        </div>
   `
 
 })
