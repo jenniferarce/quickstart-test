@@ -11,13 +11,13 @@ export class NewUserComponent{
     user;
     constructor ( fb : FormBuilder){
         this.newUserGroup = fb.group({
-            name:['',Validators.required],//Validators.compose([Validators.required])
-            phone:['',Validators.required],
+            name:['',Validators.compose([ Validators.required, Validators.minLength(3)])],//Validators.compose([Validators.required])
+            phone:[],
             email: ['', Validators.required],
-            street:['',Validators.required],
-            suite: ['', Validators.required],
-            city:['',Validators.required],
-            zipcode: ['', Validators.required]
+            street:[],
+            suite: [],
+            city:[],
+            zipcode:[]
         });
     }
     // if usuario != null EDIT...
@@ -26,7 +26,7 @@ export class NewUserComponent{
 
 
     //se puede hacer con enrutamiento por parámetro y pasar la id del usuario seleccionado.
-      
+
 
     
 }

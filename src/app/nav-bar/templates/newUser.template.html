@@ -4,11 +4,24 @@
         <legend>User</legend>
         <div class="form-group">
             <label for="name">Name</label>
-            <input id="name" type="text" class="form-control" formControlName="name">    
+            <input id="name" type="text" class="form-control" formControlName="name" >
+            <div *ngIf="newUserGroup.controls.name.touched && newUserGroup.controls.name.errors">
+                <div *ngIf="newUserGroup.controls.name.errors.required" class="alert alert-danger">
+                    <i class="glyphicon glyphicon-warning-sign"></i>Name is required
+                </div>
+                <div *ngIf="newUserGroup.controls.name.errors.minlength" class="alert alert-danger">
+                    Name should be minimum 3 characters.
+                </div>
+            </div>    
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input id="email" type="email" class="form-control" formControlName="email">    
+            <input id="email" type="email" class="form-control" formControlName="email">
+            <div *ngIf="newUserGroup.controls.email.touched && newUserGroup.controls.email.errors">
+                <div *ngIf="newUserGroup.controls.email.errors.required" class="alert alert-danger">
+                    <i class="glyphicon glyphicon-warning-sign"></i>Email is required.
+                </div>
+            </div>      
         </div>
         <div class="form-group">
             <label for="phone">Phone</label>

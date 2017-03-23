@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Component,OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
 
 
@@ -26,7 +26,7 @@ import { UsersService } from '../services/users.service';
                 <tr>
                     <td>{{user.name}}</td>
                     <td>{{user.email}}</td>
-                    <td><i class="glyphicon glyphicon-edit" (click)="setUser(user)"></i></td>
+                    <td><i class="glyphicon glyphicon-edit"></i></td>
                     <td><i class="glyphicon glyphicon-remove"></i></td>
                 </tr>
             </tbody>
@@ -38,31 +38,28 @@ import { UsersService } from '../services/users.service';
 export class UsersComponent implements OnInit {
     users;
     selectedUser;
-    isLoading=true;
+    isLoading = true;
 
-    constructor(private _usersService :UsersService, private _route:Router){
+    constructor(private _usersService: UsersService, private _route: Router) {
 
     }
 
-    ngOnInit(){
+    ngOnInit() {
         this._usersService.getUsers().subscribe(
-                                    user=>{this.users = user; 
-                                    this.isLoading=false;
-                                        });
+            user => {
+            this.users = user;
+                this.isLoading = false;
+            });
     }
 
-setUser(user : User){
-    this.selectedUser = user; 
-}
-    getUser(){
+    /*setUser(user: User) {
+        this.selectedUser = user;
+    }
+    getUser() {
         return this.selectedUser;
     }
+    //(click)="setUser(user)
+    */
 
-
-   //onAddUser(){
-       //return this._route.navigateByUrl("../templates/newUser.template.html");
-        //return routerLink="newUser";
-    //}
-//(click)="onAddUser()"
 
 }
