@@ -13,10 +13,11 @@ import {NgProjectComponent} from './nav-bar/components/ngProject.component';
 import {UsersComponent} from './nav-bar/components/users.component';
 import{NotFoundComponent} from './nav-bar/components/not-found.component';
 import {PostsComponent} from './nav-bar/components/posts.component';
+import {NewUserComponent} from './nav-bar/components/newUser.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule,HttpModule,JsonpModule,routingNgProject],
-  declarations: [AppComponent,NavBarComponent,NgProjectComponent,UsersComponent,NotFoundComponent,PostsComponent],
+  declarations: [AppComponent,NavBarComponent,NgProjectComponent,UsersComponent,NotFoundComponent,PostsComponent,NewUserComponent],
   bootstrap: [AppComponent]
 })
 

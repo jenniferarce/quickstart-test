@@ -1,7 +1,9 @@
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component,OnInit} from '@angular/core';
 import { UsersService } from '../services/users.service';
+
 
 @Component({
     template: `<h4>Users</h4>
@@ -9,7 +11,7 @@ import { UsersService } from '../services/users.service';
             <i class="fa fa-spinner fa-spin fa-3x"></i>
         </div>
     <div>
-        <button class="btn btn-primary">Add User</button>
+        <button class="btn btn-primary" type="submit" [routerLink]="['newUser']">Add User</button>
 
         <table class="table table-bordered">
             <thead>
@@ -24,21 +26,21 @@ import { UsersService } from '../services/users.service';
                 <tr>
                     <td>{{user.name}}</td>
                     <td>{{user.email}}</td>
-                    <td><i class="glyphicon glyphicon-edit"></i></td>
+                    <td><i class="glyphicon glyphicon-edit" (click)="setUser(user)"></i></td>
                     <td><i class="glyphicon glyphicon-remove"></i></td>
                 </tr>
             </tbody>
         </table>
-
     </div>
     `,
     providers: [UsersService]
 })
 export class UsersComponent implements OnInit {
     users;
+    selectedUser;
     isLoading=true;
 
-    constructor(private _usersService :UsersService){
+    constructor(private _usersService :UsersService, private _route:Router){
 
     }
 
@@ -48,4 +50,19 @@ export class UsersComponent implements OnInit {
                                     this.isLoading=false;
                                         });
     }
+
+setUser(user : User){
+    this.selectedUser = user; 
+}
+    getUser(){
+        return this.selectedUser;
+    }
+
+
+   //onAddUser(){
+       //return this._route.navigateByUrl("../templates/newUser.template.html");
+        //return routerLink="newUser";
+    //}
+//(click)="onAddUser()"
+
 }
