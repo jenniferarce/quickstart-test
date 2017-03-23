@@ -19,8 +19,8 @@ import { UsersService } from '../services/users.service';
             <tr>
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
-                <td></td>
-                <td></td>
+                <td><i class="glyphicon glyphicon-edit"></i></td>
+                <td><i class="glyphicon glyphicon-remove"></i></td>
             </tr>
         </tbody>
     </table>
