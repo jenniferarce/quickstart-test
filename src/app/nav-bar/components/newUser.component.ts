@@ -1,8 +1,8 @@
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import{Component} from '@angular/core';
+import{UsersValidators} from '../validators/users.validators';
 
 @Component({
-    //templateUrl: 'app/nav-bar/templates/newUser.template.html'
     templateUrl:'app/nav-bar/templates/newUser.template.html'
 })
 
@@ -13,7 +13,7 @@ export class NewUserComponent{
         this.newUserGroup = fb.group({
             name:['',Validators.compose([ Validators.required, Validators.minLength(3)])],//Validators.compose([Validators.required])
             phone:[],
-            email: ['', Validators.required],
+            email: ['', Validators.compose([Validators.required, UsersValidators.invalidEmail]) ],
             street:[],
             suite: [],
             city:[],
