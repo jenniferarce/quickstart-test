@@ -20,6 +20,10 @@ export class NewUserComponent{
             zipcode:[]
         });
     }
+
+    onClick(){
+        console.log(this.newUserGroup.value);
+    }
     // if usuario != null EDIT...
     //Add user > Modify User
     //Recorrés todos los controles y seteas los values = a user. name ... etc.
