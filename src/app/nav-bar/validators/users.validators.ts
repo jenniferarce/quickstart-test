@@ -13,3 +13,4 @@ export class UsersValidators{
             return {invalidEmail : true}; 
         }
     }
+}
